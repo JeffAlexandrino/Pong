@@ -1,17 +1,18 @@
 #   Código fonte de um jogo Pong utilizando o módulo Turtle
-#   Nota: É importante ter uma versão do Python 3.6+ ou a parte do marcador pode causar problemas.
+#   Nota: É importante ter uma versão do Python 3.6+ ou a parte do placar pode causar problemas.
 #------------------------------------------------------------------------------------------------------
 import turtle 
 
+#Propriedades da tela
 sc = turtle.Screen()
-sc.title("Jogo Pong")
-sc.bgcolor("black")
-sc.setup(width = 1000, height = 600)
+sc.title("Pypong") #Nome
+sc.bgcolor("black") #Cor de fundo
+sc.setup(width = 1000, height = 600) #Proporção
 
 #Propriedades da raquete esquerda
 left_pad = turtle.Turtle()
 left_pad.speed(0)
-left_pad.shape("square")#Formato
+left_pad.shape("square") #Formato
 left_pad.color("white") #Cor
 left_pad.shapesize(stretch_wid = 6, stretch_len = 2) #Tamanhos
 left_pad.penup()

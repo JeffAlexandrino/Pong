@@ -1,5 +1,5 @@
 # Pypong
-Jogo Pong programado em Python
+Jogo de arcade "Pong" programado em Python
 
 ## Sobre o Projeto
 Desde a infância, os jogos eletrônicos têm desempenhado um papel significativo em minha vida. Já aos 7 anos, buscava avidamente a chance de jogar títulos envolventes, como Mortal Kombat 4, Fórmula 1 e PES, em animadas sessões com meu pai e irmão. Agora, aos 21 anos, o ato de jogar video-game permanece como meu passatempo predileto, e não vislumbro a possibilidade de interromper esse hobby em um futuro próximo.
