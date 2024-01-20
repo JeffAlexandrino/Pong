@@ -1,3 +1,6 @@
+#   Código fonte de um jogo Pong utilizando o módulo Turtle
+#   Nota: É importante ter uma versão do Python 3.6+ ou a parte do marcador pode causar problemas.
+#------------------------------------------------------------------------------------------------------
 import turtle 
 
 sc = turtle.Screen()
@@ -31,3 +34,43 @@ hit_ball.color("red")
 hit_ball.goto(0, 0) 
 hit_ball.dx = 5  
 hit_ball.dy = -5 
+
+#Pontuação inicial
+Jogador1 = 0
+Jogador2 = 0
+
+sketch = turtle.Turtle() 
+sketch.speed(0) 
+sketch.color("blue") 
+sketch.penup() 
+sketch.hideturtle() 
+sketch.goto(0, 260) 
+sketch.write("Jogador1 : 0    Jogador2: 0", 
+             align="center", font=("Courier", 24, "normal")) 
+
+def paddleaup():
+    y = left_pad.ycor()
+    y += 20
+    left_pad.sety(y)
+
+def paddleadown():
+    y = left_pad.ycor()
+    y -= 20
+    left_pad.sety(y)
+
+def paddlebup():
+    y = right_pad.ycor()
+    y += 20
+    left_pad.sety(y)
+
+def paddlebdown():
+    y = right_pad.ycor()
+    y -= 20
+    left_pad.sety(y)
+
+#Define os comandos 
+sc.listen() 
+sc.onkeypress(paddleaup, "w") 
+sc.onkeypress(paddleadown, "s") 
+sc.onkeypress(paddlebup, "o") 
+sc.onkeypress(paddlebdown, "k") 
