@@ -1,2 +1,2 @@
 # Pong
-Jogo [PONG] feito em python
+Jogo [PONG] feito em python.
