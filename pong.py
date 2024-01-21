@@ -2,6 +2,7 @@
 #   Nota: É importante ter uma versão do Python 3.6+ ou a parte do placar pode causar problemas.
 #------------------------------------------------------------------------------------------------------
 import turtle 
+import os 
 
 #Propriedades da tela
 sc = turtle.Screen()
@@ -113,6 +114,7 @@ while True:
                         hit_ball.ycor() > right_pad.ycor()-40): 
         hit_ball.setx(360) 
         hit_ball.dx*=-1
+        os.system('aplay bounce.wav&')
          
     if (hit_ball.xcor()<-360 and 
                        hit_ball.xcor()>-370) and 
@@ -120,3 +122,4 @@ while True:
                         hit_ball.ycor()>left_pad.ycor()-40): 
         hit_ball.setx(-360) 
         hit_ball.dx*=-1
+        os.system('aplay bounce.wav&')
