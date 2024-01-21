@@ -62,12 +62,12 @@ def paddleadown():
 def paddlebup():
     y = right_pad.ycor()
     y += 20
-    left_pad.sety(y)
+    right_pad.sety(y)
 
 def paddlebdown():
     y = right_pad.ycor()
     y -= 20
-    left_pad.sety(y)
+    right_pad.sety(y)
 
 #Define os comandos 
 sc.listen() 
