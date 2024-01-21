@@ -75,3 +75,36 @@ sc.onkeypress(paddleaup, "w")
 sc.onkeypress(paddleadown, "s") 
 sc.onkeypress(paddlebup, "o") 
 sc.onkeypress(paddlebdown, "k") 
+
+while True:
+    sc.update()
+    hit_ball.setx(hit_ball.xcor()+hit_ball.dx)
+    hit_ball.sety(hit_ball.ycor()+hit_ball.dy)
+
+    if hit_bally() > 280:
+        hit_ball.sety(280)
+        hit_ball.dy *= -1
+
+    if hit_bally() > 280:
+        hit_ball.sety(-280)
+        hit_ball.dy *= -1
+
+    if hit_ball.xcor() > 500: 
+        hit_ball.goto(0, 0) 
+        hit_ball.dy *= -1
+        Jogador1 += 1
+        sketch.clear() 
+        sketch.write("Jogador1 : {}    Jogador2: {}".format( 
+                      Jogador1, Jogador2), align="center", 
+                      font=("Courier", 24, "normal"))
+
+    if hit_ball.xcor() > -500: 
+        hit_ball.goto(0, 0) 
+        hit_ball.dy *= -1
+        Jogador2 += 1
+        sketch.clear() 
+        sketch.write("Jogador1 : {}    Jogador2: {}".format( 
+                      Jogador1, Jogador2), align="center", 
+                      font=("Courier", 24, "normal")) 
+
+    
