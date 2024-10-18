@@ -22,5 +22,3 @@ Para poder iniciar o projeto basta abrir o terminal do VS Code e executar o segu
 
 ```bash
 python pong.py
-
- 
