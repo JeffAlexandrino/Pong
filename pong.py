@@ -51,23 +51,27 @@ sketch.write("Jogador1 : 0    Jogador2: 0",
 # Funções para movimentar as raquetes
 def paddleaup():
     y = left_pad.ycor()
-    y += 20
-    left_pad.sety(y)
+    if y < 250:  # Limite superior
+        y += 20
+        left_pad.sety(y)
 
 def paddleadown():
     y = left_pad.ycor()
-    y -= 20
-    left_pad.sety(y)
+    if y > -250:  # Limite inferior
+        y -= 20
+        left_pad.sety(y)
 
 def paddlebup():
     y = right_pad.ycor()
-    y += 20
-    right_pad.sety(y)
+    if y < 250:  # Limite superior
+        y += 20
+        right_pad.sety(y)
 
 def paddlebdown():
     y = right_pad.ycor()
-    y -= 20
-    right_pad.sety(y)
+    if y > -250:  # Limite inferior
+        y -= 20
+        right_pad.sety(y)
 
 # Define os comandos
 sc.listen()
@@ -82,6 +86,7 @@ while True:
     hit_ball.setx(hit_ball.xcor() + hit_ball.dx)
     hit_ball.sety(hit_ball.ycor() + hit_ball.dy)
 
+    # Colisão da bola com as bordas superiores e inferiores
     if hit_ball.ycor() > 280:
         hit_ball.sety(280)
         hit_ball.dy *= -1
@@ -90,8 +95,10 @@ while True:
         hit_ball.sety(-280)
         hit_ball.dy *= -1
 
+    # Atualiza a pontuação se a bola passar das raquetes
     if hit_ball.xcor() > 480:
         hit_ball.goto(0, 0)
+        hit_ball.dx *= -1
         hit_ball.dy *= -1
         Jogador1 += 1
         sketch.clear()
@@ -101,6 +108,7 @@ while True:
 
     if hit_ball.xcor() < -480:
         hit_ball.goto(0, 0)
+        hit_ball.dx *= -1
         hit_ball.dy *= -1
         Jogador2 += 1
         sketch.clear()
@@ -108,17 +116,19 @@ while True:
             Jogador1, Jogador2), align="center",
             font=("Courier", 24, "normal"))
 
+    # Colisão da bola com as raquetes
+    # Área de colisão para a raquete direita
     if (hit_ball.xcor() > 360 and hit_ball.xcor() < 370 and 
-    hit_ball.ycor() < right_pad.ycor() + 60 and   # Área de colisao para cima
-    hit_ball.ycor() > right_pad.ycor() - 60):     # Área de colisao para cima
-    hit_ball.setx(360)
-    hit_ball.dx *= -1
-    os.system('aplay bounce.wav&')
+        hit_ball.ycor() < right_pad.ycor() + 60 and 
+        hit_ball.ycor() > right_pad.ycor() - 60):
+        hit_ball.setx(360)
+        hit_ball.dx *= -1
+        os.system('aplay bounce.wav&')  # Ajuste o comando para Windows/Mac conforme necessário
 
+    # Área de colisão para a raquete esquerda
     if (hit_ball.xcor() < -360 and hit_ball.xcor() > -370 and 
-    hit_ball.ycor() < left_pad.ycor() + 60 and  # Área de colisao para cima
-    hit_ball.ycor() > left_pad.ycor() - 60):    # Área de colisao para baixo
-    hit_ball.setx(-360)
-    hit_ball.dx *= -1
-    os.system('aplay bounce.wav&')
-
+        hit_ball.ycor() < left_pad.ycor() + 60 and 
+        hit_ball.ycor() > left_pad.ycor() - 60):
+        hit_ball.setx(-360)
+        hit_ball.dx *= -1
+        os.system('aplay bounce.wav&')  # Ajuste o comando para Windows/Mac conforme necessário
