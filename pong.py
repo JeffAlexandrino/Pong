@@ -3,9 +3,9 @@ import os
 
 # Propriedades da tela
 sc = turtle.Screen()
-sc.title("Pypong")  # Nome
+sc.title("PyPong")  # Nome
 sc.bgcolor("black")  # Cor de fundo
-sc.setup(width=1000, height=600)  # Proporção
+sc.setup(width=1200, height=800)  # Proporção
 
 # Propriedades da raquete esquerda
 left_pad = turtle.Turtle()
