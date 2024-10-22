@@ -16,3 +16,9 @@ O projeto "Pypong" visa proporcionar uma experiência prática e enriquecedora n
 
 ## Pré-requisitos
 Certifique-se de ter o Python instalado em seu sistema. A biblioteca Turtle geralmente já está incluída na instalação padrão do Python.
+
+### Iniciar
+Para poder iniciar o projeto basta abrir o terminal do VS Code e executar o seguinte comando:
+
+```bash
+python pong.py
