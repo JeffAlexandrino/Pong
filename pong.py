@@ -1,11 +1,18 @@
 import turtle
 import os
+import pygame  # Biblioteca para sons
+
+# Inicializa o mixer do pygame
+pygame.mixer.init()
+
+# Carrega os sons
+bounce_sound = pygame.mixer.Sound("bounce.wav")
 
 # Propriedades da tela
 sc = turtle.Screen()
 sc.title("PyPong")  # Nome
 sc.bgcolor("black")  # Cor de fundo
-sc.setup(width=1200, height=800)  # Proporção
+sc.setup(width=1000, height=800)  # Proporção
 
 # Propriedades da raquete esquerda
 left_pad = turtle.Turtle()
@@ -32,8 +39,8 @@ hit_ball.shape("circle")
 hit_ball.color("red")
 hit_ball.penup()
 hit_ball.goto(0, 0)
-hit_ball.dx = 5
-hit_ball.dy = -5
+hit_ball.dx = 7  # Aumentei a velocidade horizontal da bola
+hit_ball.dy = -7  # Aumentei a velocidade vertical da bola
 
 # Pontuação inicial
 Jogador1 = 0
@@ -52,25 +59,25 @@ sketch.write("Jogador1 : 0    Jogador2: 0",
 def paddleaup():
     y = left_pad.ycor()
     if y < 250:  # Limite superior
-        y += 20
+        y += 30  # Aumentei a velocidade das raquetes
         left_pad.sety(y)
 
 def paddleadown():
     y = left_pad.ycor()
     if y > -250:  # Limite inferior
-        y -= 20
+        y -= 30  # Aumentei a velocidade das raquetes
         left_pad.sety(y)
 
 def paddlebup():
     y = right_pad.ycor()
     if y < 250:  # Limite superior
-        y += 20
+        y += 30  # Aumentei a velocidade das raquetes
         right_pad.sety(y)
 
 def paddlebdown():
     y = right_pad.ycor()
     if y > -250:  # Limite inferior
-        y -= 20
+        y -= 30  # Aumentei a velocidade das raquetes
         right_pad.sety(y)
 
 # Define os comandos
@@ -90,10 +97,12 @@ while True:
     if hit_ball.ycor() > 280:
         hit_ball.sety(280)
         hit_ball.dy *= -1
+        pygame.mixer.Sound.play(bounce_sound)  # Toca som ao colidir
 
     if hit_ball.ycor() < -280:
         hit_ball.sety(-280)
         hit_ball.dy *= -1
+        pygame.mixer.Sound.play(bounce_sound)  # Toca som ao colidir
 
     # Atualiza a pontuação se a bola passar das raquetes
     if hit_ball.xcor() > 480:
@@ -123,7 +132,7 @@ while True:
         hit_ball.ycor() > right_pad.ycor() - 60):
         hit_ball.setx(360)
         hit_ball.dx *= -1
-        os.system('aplay bounce.wav&')  # Ajuste o comando para Windows/Mac conforme necessário
+        pygame.mixer.Sound.play(bounce_sound)  # Toca som ao colidir
 
     # Área de colisão para a raquete esquerda
     if (hit_ball.xcor() < -360 and hit_ball.xcor() > -370 and 
@@ -131,4 +140,4 @@ while True:
         hit_ball.ycor() > left_pad.ycor() - 60):
         hit_ball.setx(-360)
         hit_ball.dx *= -1
-        os.system('aplay bounce.wav&') 
+        pygame.mixer.Sound.play(bounce_sound)  # Toca som ao colidir
